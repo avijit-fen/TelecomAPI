@@ -1,0 +1,146 @@
+{
+    "paths": {
+        "/CDR/Contract/{VID}": {
+            "get": {
+                "operationId": "GetContract",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CONTRACTRESPONSE",
+                        "schema": {
+                            "x-oad-type": "array",
+                            "type": "array",
+                            "title": "CDRRESPONSE",
+                            "items": {
+                                "x-oad-type": "reference",
+                                "$ref": "#/definitions/CONTRACT"
+                            }
+                        },
+                        "x-oad-type": "response"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "VID",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-oad-type": "parameter"
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "CreateContact",
+                "responses": {
+                    "200": {
+                        "description": "CONTRACT RESPONSE",
+                        "schema": {
+                            "x-oad-type": "string",
+                            "type": "string"
+                        },
+                        "x-oad-type": "response"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "VID",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-oad-type": "parameter"
+                    },
+                    {
+                        "name": "OBJCONTRACT",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "x-oad-type": "reference",
+                            "$ref": "#/definitions/CONTRACT"
+                        },
+                        "x-oad-type": "parameter"
+                    }
+                ]
+            },
+            "x-oad-type": "operation"
+        },
+        "/CDR/Contract/{VID}/{VADDRESS}": {
+            "get": {
+                "operationId": "GETCDRBYIDANDADDR",
+                "responses": {
+                    "200": {
+                        "description": "CDRRESPONSE",
+                        "schema": {
+                            "x-oad-type": "array",
+                            "type": "array",
+                            "items": {
+                                "x-oad-type": "reference",
+                                "$ref": "#/definitions/CONTRACT"
+                            }
+                        },
+                        "x-oad-type": "response"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "VID",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-oad-type": "parameter"
+                    },
+                    {
+                        "name": "VADDRESS",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "x-oad-type": "parameter"
+                    }
+                ]
+            },
+            "x-oad-type": "operation"
+        }
+    },
+    "definitions": {
+        "CONTRACT": {
+            "x-oad-type": "object",
+            "type": "object",
+            "properties": {
+                "CDRID": {
+                    "x-oad-type": "string",
+                    "type": "string"
+                },
+                "CDRCONTENT": {
+                    "x-oad-type": "string",
+                    "type": "string",
+                    "title": "CDRCONTENT"
+                }
+            }
+        }
+    },
+    "info": {
+        "title": "Telecom",
+        "version": "1.0.0",
+        "description": "This is api will be used to calculate roaming charges based on CDR files"
+    },
+    "basePath": "/",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json",
+        "application/xml"
+    ],
+    "produces": [
+        "application/json",
+        "application/xml"
+    ],
+    "swagger": "2.0"
+}
